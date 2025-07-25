@@ -8,10 +8,10 @@ async function connectionDB() {
     try {
         await db.authenticate()
         db.sync() 
-        console.log(colors.rainbow("Conexion exitosa"));
+        console.log(colors.rainbow("Conexion exitosa")); 
     } catch (error) {
-        //  console.log(error);
-        console.log(colors.white.bgRed.bold("Hubo un error al conectar"));
+        // TODO: No se puede ejecutar esta linea en pruebas por ahora
+        //console.log(colors.white.bgRed.bold("Hubo un error al conectar"));
     }   
 }
 connectionDB()
