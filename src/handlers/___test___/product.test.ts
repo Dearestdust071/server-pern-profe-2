@@ -1,5 +1,8 @@
 const request = require('supertest');
 import server  from '../../server';   
+jest.mock(request)
+
+
 
 describe('POST /api/products', () => {
   it('debe retornar 400 si el cuerpo está vacío', async () => {
@@ -137,3 +140,22 @@ describe('DELETE /api/products/:id', () => {
     expect(res.body.message).toMatch(/eliminado/i);
   });
 });
+
+
+/// TODO: crear pruebas para product.test
+
+describe("Connect to database", ()=>{
+    it("Should handle database connection error", async () =>{
+
+        //fuerza el error 
+        
+
+
+        const consoleSpy = jest.spyOn(console, 'log')
+        await connectionDB()
+
+        expect(consoleSpy).toHaveBeenCalledWith(
+            expect.stringContaining("Hubo un error al conectar")
+        )
+    })
+})
