@@ -4,6 +4,32 @@ import { handleInputErrors } from "./middleware";
 import { body, param} from 'express-validator';
 
 const router = Router()
+
+/**
+ * @swagger
+ * components:
+ *      schemas:
+ *          Product:
+ *              type: object
+ *              properties:
+ *                  id:
+ *                      type: integer
+ *                      description: The Product ID
+ *                      example: 1
+ *                  name:
+ *                      type: string
+ *                      description: The Product name
+ *                      example: Monitor Curvo de 49 Pulgadas
+ *                  price:
+ *                      type: number
+ *                      description: The Product price
+ *                      example: 300
+ *                  availability:
+ *                      type: boolean
+ *                      description: The Product availability
+ *                      example: true
+ */
+
 //create
 router.post('/',
     body('name')
