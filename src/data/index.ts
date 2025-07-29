@@ -1,14 +1,15 @@
 import db from '../config/db';
 import Product from '../models/Producto.mo';
+import colors from "colors";
 
 async function clearDatabase() {
   try {
     await db.authenticate();
     await Product.destroy({ where: {} }); // Borra todos los productos
-    console.log('Base de datos limpiada');
+    console.log(colors.random('✅ Base de datos limpiada'));
     process.exit(0);
   } catch (error) {
-    console.error('Error al limpiar la base de datos', error);
+    console.error('❌ Error al limpiar la base de datos', error);
     process.exit(1);
   }
 }

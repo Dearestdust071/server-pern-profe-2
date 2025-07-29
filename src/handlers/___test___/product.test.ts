@@ -1,15 +1,16 @@
 const request = require('supertest');
-import server  from '../../server';   
-jest.mock(request)
+import server  from '../../server'; 
+import { createProduct } from '../product';
+// jest.mock('../product');
 
 
 
-describe('POST /api/products', () => {
-  it('debe retornar 400 si el cuerpo está vacío', async () => {
-    const res = await request(server).post('/api/products').send({});
-    expect(res.statusCode).toBe(400);
-    expect(res.body.errors).toBeDefined();
-  });
+  describe('POST /api/products', () => {
+    it('debe retornar 400 si el cuerpo está vacío', async () => {
+      const res = await request(server).post('/api/products').send({});
+      expect(res.statusCode).toBe(400);
+      expect(res.body.errors).toBeDefined();
+    });
 
   it('debe retornar 400 si el price es menor o igual a 0', async () => {
     const res = await request(server).post('/api/products').send({ name: 'Producto X', price: 0 });
@@ -142,20 +143,23 @@ describe('DELETE /api/products/:id', () => {
 });
 
 
-/// TODO: crear pruebas para product.test
 
-describe("Connect to database", ()=>{
-    it("Should handle database connection error", async () =>{
+// describe('Handler errors - createProduct', () => {
+//   it('debe retornar 500 si ocurre un error al crear producto', async () => {
+//     const req = {
+//       body: { name: 'Algo'},
+//     } as any;
 
-        //fuerza el error 
-        
+//     const res = {
+//       status: jest.fn().mockReturnThis(),
+//       json: jest.fn(),
+//     } as any;
 
+//     (createProduct as jest.Mock).mockRejectedValueOnce(new Error('Error simulado'));
 
-        const consoleSpy = jest.spyOn(console, 'log')
-        await connectionDB()
+//     await createProduct(req, res);
 
-        expect(consoleSpy).toHaveBeenCalledWith(
-            expect.stringContaining("Hubo un error al conectar")
-        )
-    })
-})
+//     expect(res.status).toHaveBeenCalledWith(500);
+//     expect(res.json).toHaveBeenCalledWith({ error: 'Error al crear producto' });
+//   });
+// });

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1753727300858" clover="3.2.0">
-  <project timestamp="1753727300858" name="All files">
-    <metrics statements="86" coveredstatements="86" conditionals="10" coveredconditionals="10" methods="10" coveredmethods="10" elements="106" coveredelements="106" complexity="0" loc="86" ncloc="86" packages="5" files="6" classes="6"/>
+<coverage generated="1753811595750" clover="3.2.0">
+  <project timestamp="1753811595750" name="All files">
+    <metrics statements="92" coveredstatements="53" conditionals="10" coveredconditionals="2" methods="10" coveredmethods="4" elements="112" coveredelements="59" complexity="0" loc="92" ncloc="92" packages="5" files="6" classes="6"/>
     <package name="src">
       <metrics statements="29" coveredstatements="29" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-      <file name="router.ts" path="/Users/Alumno/Documents/Jorge_pern/server-pern-profe-2/src/router.ts">
+      <file name="router.ts" path="/Users/dust/Documents/Programacion/12_cuatrimestre/Sistemas_abiertos_III/pernnn/server-pern-profe-2/src/router.ts">
         <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
@@ -16,12 +16,12 @@
         <line num="17" count="2" type="stmt"/>
         <line num="19" count="2" type="stmt"/>
         <line num="23" count="2" type="stmt"/>
-        <line num="30" count="4" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
         <line num="33" count="2" type="stmt"/>
         <line num="38" count="2" type="stmt"/>
         <line num="45" count="2" type="stmt"/>
       </file>
-      <file name="server.ts" path="/Users/Alumno/Documents/Jorge_pern/server-pern-profe-2/src/server.ts">
+      <file name="server.ts" path="/Users/dust/Documents/Programacion/12_cuatrimestre/Sistemas_abiertos_III/pernnn/server-pern-profe-2/src/server.ts">
         <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
@@ -32,17 +32,17 @@
         <line num="9" count="3" type="stmt"/>
         <line num="10" count="2" type="stmt"/>
         <line num="11" count="2" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="17" count="2" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
-        <line num="21" count="2" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
         <line num="23" count="2" type="stmt"/>
-        <line num="24" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.config">
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="db.ts" path="/Users/Alumno/Documents/Jorge_pern/server-pern-profe-2/src/config/db.ts">
+      <file name="db.ts" path="/Users/dust/Documents/Programacion/12_cuatrimestre/Sistemas_abiertos_III/pernnn/server-pern-profe-2/src/config/db.ts">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
@@ -52,73 +52,79 @@
       </file>
     </package>
     <package name="src.handlers">
-      <metrics statements="40" coveredstatements="40" conditionals="8" coveredconditionals="8" methods="6" coveredmethods="6"/>
-      <file name="product.ts" path="/Users/Alumno/Documents/Jorge_pern/server-pern-profe-2/src/handlers/product.ts">
-        <metrics statements="40" coveredstatements="40" conditionals="8" coveredconditionals="8" methods="6" coveredmethods="6"/>
+      <metrics statements="46" coveredstatements="7" conditionals="8" coveredconditionals="0" methods="6" coveredmethods="0"/>
+      <file name="product.ts" path="/Users/dust/Documents/Programacion/12_cuatrimestre/Sistemas_abiertos_III/pernnn/server-pern-profe-2/src/handlers/product.ts">
+        <metrics statements="46" coveredstatements="7" conditionals="8" coveredconditionals="0" methods="6" coveredmethods="0"/>
         <line num="3" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="7" type="stmt"/>
-        <line num="8" count="7" type="stmt"/>
-        <line num="9" count="7" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
-        <line num="19" count="4" type="stmt"/>
-        <line num="20" count="4" type="stmt"/>
-        <line num="24" count="3" type="stmt"/>
-        <line num="33" count="2" type="stmt"/>
-        <line num="34" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
         <line num="35" count="2" type="stmt"/>
-        <line num="36" count="2" type="stmt"/>
-        <line num="38" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="40" count="1" type="stmt"/>
-        <line num="44" count="1" type="stmt"/>
-        <line num="53" count="2" type="stmt"/>
-        <line num="54" count="2" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="40" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
         <line num="55" count="2" type="stmt"/>
-        <line num="56" count="2" type="stmt"/>
-        <line num="58" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="59" count="1" type="stmt"/>
-        <line num="62" count="1" type="stmt"/>
-        <line num="65" count="1" type="stmt"/>
-        <line num="74" count="2" type="stmt"/>
-        <line num="75" count="3" type="stmt"/>
-        <line num="76" count="3" type="stmt"/>
-        <line num="77" count="3" type="stmt"/>
-        <line num="79" count="3" type="cond" truecount="2" falsecount="0"/>
-        <line num="80" count="1" type="stmt"/>
-        <line num="83" count="2" type="stmt"/>
-        <line num="84" count="2" type="stmt"/>
-        <line num="87" count="2" type="stmt"/>
-        <line num="96" count="2" type="stmt"/>
-        <line num="97" count="2" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="60" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="76" count="2" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="81" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="86" count="0" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="92" count="0" type="stmt"/>
         <line num="98" count="2" type="stmt"/>
-        <line num="99" count="2" type="stmt"/>
-        <line num="101" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="102" count="1" type="stmt"/>
-        <line num="105" count="1" type="stmt"/>
+        <line num="99" count="0" type="stmt"/>
+        <line num="100" count="0" type="stmt"/>
+        <line num="101" count="0" type="stmt"/>
+        <line num="103" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="104" count="0" type="stmt"/>
+        <line num="107" count="0" type="stmt"/>
+        <line num="109" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.middleware">
       <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-      <file name="index.ts" path="/Users/Alumno/Documents/Jorge_pern/server-pern-profe-2/src/middleware/index.ts">
+      <file name="index.ts" path="/Users/dust/Documents/Programacion/12_cuatrimestre/Sistemas_abiertos_III/pernnn/server-pern-profe-2/src/middleware/index.ts">
         <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="2" count="2" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
-        <line num="6" count="24" type="stmt"/>
-        <line num="8" count="24" type="cond" truecount="2" falsecount="0"/>
-        <line num="9" count="8" type="stmt"/>
-        <line num="12" count="16" type="stmt"/>
+        <line num="6" count="17" type="stmt"/>
+        <line num="8" count="17" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="6" type="stmt"/>
+        <line num="12" count="11" type="stmt"/>
       </file>
     </package>
     <package name="src.models">
       <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="Producto.mo.ts" path="/Users/Alumno/Documents/Jorge_pern/server-pern-profe-2/src/models/Producto.mo.ts">
+      <file name="Producto.mo.ts" path="/Users/dust/Documents/Programacion/12_cuatrimestre/Sistemas_abiertos_III/pernnn/server-pern-profe-2/src/models/Producto.mo.ts">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="6" count="3" type="stmt"/>
-        <line num="11" count="3" type="stmt"/>
-        <line num="16" count="3" type="stmt"/>
-        <line num="21" count="3" type="stmt"/>
-        <line num="24" count="3" type="stmt"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="21" count="4" type="stmt"/>
+        <line num="24" count="4" type="stmt"/>
       </file>
     </package>
   </project>
