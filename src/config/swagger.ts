@@ -9,6 +9,11 @@ const options : swaggerJSDoc.Options = {
             name:'Products',
             description: 'Operaciones de API PERN con products'
             },
+            {
+            name:'Users',
+            description: 'Operaciones de API PERN con users'
+            },
+            
             
         ],
         info:{

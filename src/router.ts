@@ -70,6 +70,26 @@ const router = Router()
  */
 
 
+/**
+ * 
+ * @swagger 
+ *  /api/products:
+ *      get:
+ *          summary: Obtener una lista de los productos.
+ *          tags: 
+ *              - Products
+ *          description: Regresa una lista de productos
+ *          responses: 
+ *                  200:
+ *                      description: Respuesta exitosa. B) 
+ *                      content: 
+ *                          application/json:
+ *                              schema: 
+ *                                  type: array
+ *                                  items: 
+ *                                      $ref: '#/components/schemas/Product'
+ */
+
 //create
 router.post('/products',
     body('name')
