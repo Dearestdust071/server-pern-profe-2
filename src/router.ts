@@ -31,7 +31,7 @@ const router = Router()
  */
 
 //create
-router.post('/',
+router.post('/products',
     body('name')
     .notEmpty().withMessage('tonto te falto el nombre'),
     body('price')
@@ -40,13 +40,13 @@ router.post('/',
     .custom(value=> value>0).withMessage('Valor no valido')
     ,handleInputErrors,createProduct)
 //getAll
-router.get('/',getAllProducts)
+router.get('/products',getAllProducts)
 
-router.get('/:id',
+router.get('/products:id',
     param('id').isNumeric().isInt().withMessage('Id no es numerico'),
     handleInputErrors,getProductByID)
 
-router.put('/:id',
+router.put('/products:id',
     param('id').isNumeric().isInt().withMessage('Id no es numerico'),
     body('name')
     .notEmpty().withMessage('tonto te falto el nombre'),
@@ -56,12 +56,12 @@ router.put('/:id',
     .custom(value=> value>0).withMessage('Valor no valido')
     ,handleInputErrors,updateProduct)
 
-router.patch('/:id', 
+router.patch('/products:id', 
     param('id').isInt().withMessage('ID no válido'),
     handleInputErrors,
     updateAvailability
 )
-router.delete('/:id', 
+router.delete('/products:id', 
     param('id').isInt().withMessage('ID no válido'),
     handleInputErrors,
     deleteProduct
