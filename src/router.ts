@@ -30,6 +30,46 @@ const router = Router()
  *                      example: true
  */
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     User:
+ *       type: object
+ *       required:
+ *         - username
+ *         - email
+ *         - password
+ *       properties:
+ *         id:
+ *           type: integer
+ *           description: ID del usuario
+ *           example: 1
+ *         username:
+ *           type: string
+ *           description: Nombre de usuario
+ *           example: jorge123
+ *         email:
+ *           type: string
+ *           format: email
+ *           description: Correo electrónico del usuario
+ *           example: jorge@email.com
+ *         password:
+ *           type: string
+ *           description: Contraseña (no se muestra)
+ *           example: contraseñaSegura123
+ *         role:
+ *           type: string
+ *           enum: [user, admin]
+ *           description: Rol del usuario
+ *           example: user
+ *         isActive:
+ *           type: boolean
+ *           description: Si el usuario está activo
+ *           example: true
+ */
+
+
 //create
 router.post('/products',
     body('name')
