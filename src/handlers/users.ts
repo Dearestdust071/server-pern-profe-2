@@ -3,7 +3,7 @@ import { check, validationResult } from "express-validator";
 import User from "../models/Usuario.mo";
 import { error } from "console";
 
-//Create Products
+//Create user
 export const createUser = async (req: Request, res: Response) => {
 
   const user = await User.create(req.body);
