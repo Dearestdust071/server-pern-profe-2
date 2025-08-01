@@ -1,6 +1,6 @@
 import { Router } from "express"
 import { createProduct, getAllProducts, getProductByID ,updateProduct,updateAvailability, deleteProduct} from './handlers/product';
-import { createUser, deleteUsersById, getAllUsers, getUsersByID, updateUsersByID } from "./handlers/users";
+import { createUser, deleteUsersById, getAllUsers, getUsersByID, updateActive, updateUsersByID } from "./handlers/users";
 import { handleInputErrors } from "./middleware";
 import { body, param} from 'express-validator';
 
@@ -92,7 +92,7 @@ const router = Router()
  */
 
 //create
-router.post('/products',
+router.post('/products/',
     body('name')
     .notEmpty().withMessage('tonto te falto el nombre'),
     body('price')
@@ -101,13 +101,13 @@ router.post('/products',
     .custom(value=> value>0).withMessage('Valor no valido')
     ,handleInputErrors,createProduct)
 //getAll
-router.get('/products',getAllProducts)
+router.get('/products/',getAllProducts)
 
-router.get('/products:id',
+router.get('/products/:id',
     param('id').isNumeric().isInt().withMessage('Id no es numerico'),
     handleInputErrors,getProductByID)
 
-router.put('/products:id',
+router.put('/products/:id',
     param('id').isNumeric().isInt().withMessage('Id no es numerico'),
     body('name')
     .notEmpty().withMessage('tonto te falto el nombre'),
@@ -117,12 +117,12 @@ router.put('/products:id',
     .custom(value=> value>0).withMessage('Valor no valido')
     ,handleInputErrors,updateProduct)
 
-router.patch('/products:id', 
+router.patch('/products/:id', 
     param('id').isInt().withMessage('ID no válido'),
     handleInputErrors,
     updateAvailability
 )
-router.delete('/products:id', 
+router.delete('/products/:id', 
     param('id').isInt().withMessage('ID no válido'),
     handleInputErrors,
     deleteProduct
@@ -135,21 +135,20 @@ router.delete('/products:id',
 // Users routes
 
 
-// // GET all users
-router.get("/users", getAllUsers, (req, res) => {
-  res.send("Listado de usuarios obtenido correctamente");
-});
+
+// GET all users
+router.get(
+  "/users",
+  getAllUsers
+);
 
 // GET user by ID
 router.get(
   "/users/:id",
-  param("id").isNumeric().withMessage("ID tiene que ser numérico."),
-  param("id").isInt().withMessage("ID tiene que ser entero."),
+  param("id")
+    .isInt().withMessage("ID tiene que ser un entero."),
   handleInputErrors,
-  getUsersByID,
-  (req, res) => {
-    res.send("Usuario obtenido por ID");
-  }
+  getUsersByID
 );
 
 // CREATE user
@@ -172,11 +171,11 @@ router.post(
   createUser
 );
 
-// UPDATE user
+// UPDATE user (PUT)
 router.put(
   "/users/:id",
-  param("id").isNumeric().withMessage("ID tiene que ser numérico."),
-  param("id").isInt().withMessage("ID tiene que ser entero."),
+  param("id")
+    .isInt().withMessage("ID tiene que ser un entero."),
   body("username")
     .optional()
     .isString().withMessage("Formato de nombre de usuario inválido"),
@@ -191,36 +190,25 @@ router.put(
     .optional()
     .isIn(["user", "admin"]).withMessage("Role inválido, permitido: user o admin"),
   handleInputErrors,
-  updateUsersByID,
-  (req, res) => {
-    res.send("Usuario actualizado");
-  }
-);
-
-// DELETE user
-router.delete(
-  "/users/:id",
-  param("id").isNumeric().withMessage("ID tiene que ser numérico."),
-  param("id").isInt().withMessage("ID tiene que ser entero."),
-  handleInputErrors,
-  deleteUsersById,
-  (req, res) => {
-    res.send("Usuario eliminado");
-  }
+  updateUsersByID
 );
 
 // PATCH user availability
 router.patch(
   "/users/:id",
-  param("id").isNumeric().withMessage("ID tiene que ser numérico."),
-  param("id").isInt().withMessage("ID tiene que ser entero."),
+  param("id")
+    .isInt().withMessage("ID tiene que ser un entero."),
   handleInputErrors,
-  updateAvailability,
-  (req, res) => {
-    res.send("Estado de disponibilidad actualizado");
-  }
+  updateActive
 );
 
+// DELETE user
+router.delete(
+  "/users/:id",
+  param("id")
+    .isInt().withMessage("ID tiene que ser un entero."),
+  handleInputErrors,
+  deleteUsersById
+);
 
-
-export default router
+export default router;

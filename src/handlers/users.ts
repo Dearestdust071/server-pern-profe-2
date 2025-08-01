@@ -1,79 +1,89 @@
+// src/handlers/users.ts
+
 import { Request, Response } from "express";
-import { check, validationResult } from "express-validator";
+import { UniqueConstraintError } from "sequelize";
 import User from "../models/Usuario.mo";
-import { error } from "console";
 
-//Create user
+// CREATE user
 export const createUser = async (req: Request, res: Response) => {
+  try {
+    const user = await User.create(req.body);
+    return res.status(200).json({ data: user });
+  } catch (err: any) {
+    console.error(err);
 
-  const user = await User.create(req.body);
-  res.json({ data: user });
+    // Si choca por unique constraint en email o username
+    if (err instanceof UniqueConstraintError) {
+      return res.status(500).json({ error: "Email o usuario ya existe" });
+    }
+
+    return res.status(500).json({ error: "Error al crear usuario" });
+  }
 };
-//Get users
+
+// GET all users
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
     const users = await User.findAll({
-      order: [["price", "DESC"]],
+      order: [["username", "ASC"]],
     });
-    if (users.length === 0) {
-      return res.status(404).json({ error: "No hay useros" });
-    }
-    res.json({ data: users });
-  } catch (error) {
-    console.log(error);
+    // Siempre devolvemos 200 con un array (incluso si está vacío)
+    return res.status(200).json({ data: users });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Error al obtener usuarios" });
   }
 };
 
-//Get user by ID
+// GET user by ID
 export const getUsersByID = async (req: Request, res: Response) => {
   const { id } = req.params;
   const user = await User.findByPk(id);
+
   if (!user) {
     return res.status(404).json({ error: "No existe el usero" });
   }
-  res.json({ data: user });
-  //res.send("Hola desde get by id")
+
+  return res.status(200).json({ data: user });
 };
 
-
-    
-//UPDATE user
+// UPDATE user
 export const updateUsersByID = async (req: Request, res: Response) => {
   const { id } = req.params;
   const user = await User.findByPk(id);
-  console.log(req.body);
+
   if (!user) {
-    return res
-      .status(404)
-      .json({ error: "No existe el usero", data: user });
+    return res.status(404).json({ error: "No existe el usero" });
   }
-  //actualizar
+
+  console.log(req.body);
   await user.update(req.body);
-  res.json({ data: user });
-  //res.send("Hola desde put")
+  return res.status(200).json({ data: user });
 };
 
-//Delete user
+// DELETE user
 export const deleteUsersById = async (req: Request, res: Response) => {
   const { id } = req.params;
   const user = await User.findByPk(id);
+
   if (!user) {
     return res.status(404).json({ error: "No existe el usero" });
   }
-  //borrar
+
   await user.destroy();
-  res.json({ data: user });
-  //res.send("Hola desde delete")
+  return res.status(200).json({ data: user });
 };
 
-export const updateAvailability = async (req: Request, res: Response) => {
-    const { id } = req.params;
+// PATCH availability
+export const updateActive = async (req: Request, res: Response) => {
+  const { id } = req.params;
   const user = await User.findByPk(id);
+
   if (!user) {
     return res.status(404).json({ error: "No existe el usero" });
   }
 
-  user.isActive = !user.dataValues.isActive
-  await user.save()
-  res.json({ data: user });
-}
+  user.isActive = !user.isActive;
+  await user.save();
+  return res.status(200).json({ data: user });
+};
