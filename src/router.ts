@@ -90,7 +90,81 @@ const router = Router()
  *                                  items: 
  *                                      $ref: '#/components/schemas/Product'
  */
+//getAll
+router.get('/products/',getAllProducts)
 
+/**
+ * 
+ * @swagger 
+ *  /api/products/{id}:
+ *      get:
+ *          summary: Obtener un producto por ID.
+ *          tags: 
+ *              - Products
+ *          description: Regresa un producto.
+ * 
+ *          parameters: 
+ *              - in: path 
+ *                name: id 
+ *                description: El ID del producto a consultar 
+ *                required: true
+ *                schema: 
+ *                  type: integer
+ *          responses: 
+ *              200:
+ *                  description: Respuesta exitosa. B) 
+ *                  content: 
+ *                      application/json:
+ *                          schema: 
+ *                              $ref: '#/components/schemas/Product'
+ *              404: 
+ *                  description: No encontrado 
+ *              400:
+ *                  description: Solicitud erronea  - Id invalido
+ */
+
+router.get('/products/:id',
+    param('id').isNumeric().isInt().withMessage('Id no es numerico'),
+    handleInputErrors,getProductByID)
+
+
+/**
+ * @swagger
+ * /api/products:
+ *  post:
+ *      summary: Crea un nuevo producto 
+ *      tags: 
+ *          - Products
+ *      description: Retorna un nuevo registro en la base de datos.
+ *      
+ * 
+ *      responses:
+ *          201: 
+ *              description: Respuesta exitosa
+ *              content: 
+ *                  application/json:
+ *                    schema: 
+ *                      $ref: '#/components/schemas/Product'
+ *          400:
+ *              description: Mala respuesta - datos invalidos
+ *              requestBody:
+ *                  required: true
+ *                  content: 
+ *                      application/json:
+ *                          schema: 
+ *                            type: object
+ *                            properties: 
+ *                                name:
+ *                                    type: string 
+ *                                    example: "Monitor curvo  49 pulgadas"
+ *                                price: 
+ *                                  type: number
+ *                                  example: 1599
+ *                                availability:
+ *                                    type: bool
+ *                                    example: true
+ *  
+ */
 //create
 router.post('/products/',
     body('name')
@@ -100,8 +174,7 @@ router.post('/products/',
     .isNumeric().withMessage('El dato no es numerico')
     .custom(value=> value>0).withMessage('Valor no valido')
     ,handleInputErrors,createProduct)
-//getAll
-router.get('/products/',getAllProducts)
+
 
 router.get('/products/:id',
     param('id').isNumeric().isInt().withMessage('Id no es numerico'),
@@ -210,5 +283,7 @@ router.delete(
   handleInputErrors,
   deleteUsersById
 );
+
+
 
 export default router;
