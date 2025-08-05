@@ -165,6 +165,7 @@ router.get('/products/:id',
  *                                    example: true
  *  
  */
+
 //create
 router.post('/products/',
     body('name')
@@ -206,6 +207,103 @@ router.delete('/products/:id',
 
 
 // Users routes
+
+
+
+
+/**
+ * @swagger
+ * /api/users:
+ *   get:
+ *     summary: Obtener todos los usuarios
+ *     tags:
+ *       - Users
+ *     description: Regresa una lista de todos los usuarios registrados.
+ *     responses:
+ *       200:
+ *         description: Lista de usuarios obtenida exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/User'
+ */
+
+/**
+ * @swagger
+ * /api/users/{id}:
+ *   get:
+ *     summary: Obtener un usuario por ID
+ *     tags:
+ *       - Users
+ *     description: Regresa un usuario específico por su ID.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID del usuario a consultar
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Usuario encontrado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/User'
+ *       404:
+ *         description: Usuario no encontrado
+ *       400:
+ *         description: Solicitud inválida - ID incorrecto
+ */
+
+/**
+ * @swagger
+ * /api/users:
+ *   post:
+ *     summary: Crear un nuevo usuario
+ *     tags:
+ *       - Users
+ *     description: Registra un nuevo usuario en la base de datos.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - username
+ *               - email
+ *               - password
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 example: jorge123
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 example: jorge@email.com
+ *               password:
+ *                 type: string
+ *                 example: contraseñaSegura123
+ *               role:
+ *                 type: string
+ *                 enum: [user, admin]
+ *                 example: user
+ *     responses:
+ *       201:
+ *         description: Usuario creado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/User'
+ *       400:
+ *         description: Datos inválidos o faltantes
+ *       500:
+ *         description: Error al crear usuario (duplicado o interno)
+ */
+
 
 
 
