@@ -137,7 +137,27 @@ router.get('/products/:id',
  *          - Products
  *      description: Retorna un nuevo registro en la base de datos.
  *      
- * 
+ *      requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - id
+ *               - name
+ *               - price
+ *               - availability 
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 example: sanbuichito
+ *               price:
+ *                 type: int
+ *                 example: 100
+ *               availability:
+ *                 type: boolean
+ *                 example: true
  *      responses:
  *          201: 
  *              description: Respuesta exitosa
@@ -164,6 +184,68 @@ router.get('/products/:id',
  *                                    type: bool
  *                                    example: true
  *  
+ */
+
+/**
+ * @swagger
+ * /api/products/{id}:
+ *  put:
+ *      summary: Edita un producto ya existente 
+ *      tags: 
+ *          - Products
+ *      description: Retorna el registro actualizado en la base de datos.
+ *      requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *               - price
+ *               - availability 
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 example: sanbuichito2
+ *               price:
+ *                 type: int
+ *                 example: 100
+ *               availability:
+ *                 type: boolean
+ *                 example: true
+ *      parameters: 
+ *              - in: path 
+ *                name: id 
+ *                description: El ID del producto a actualizar 
+ *                required: true
+ *                schema: 
+ *                  type: integer
+ *      responses:
+ *          200: 
+ *              description: Respuesta exitosa
+ *              content: 
+ *                  application/json:
+ *                    schema: 
+ *                      $ref: '#/components/schemas/Product'
+ *          400:
+ *              description: Mala respuesta - datos invalidos
+ *              requestBody:
+ *                  required: true
+ *                  content: 
+ *                      application/json:
+ *                          schema: 
+ *                            type: object
+ *                            properties: 
+ *                                name:
+ *                                    type: string 
+ *                                    example: "Monitor curvo  49 pulgadas"
+ *                                price: 
+ *                                  type: number
+ *                                  example: 1599
+ *                                availability:
+ *                                    type: bool
+ *                                    example: true
  */
 
 //create
@@ -304,6 +386,72 @@ router.delete('/products/:id',
  *         description: Error al crear usuario (duplicado o interno)
  */
 
+/**
+ * @swagger
+ * /api/users/{id}:
+ *  put:
+ *      summary: Edita un usuario ya existente 
+ *      tags: 
+ *          - Users
+ *      description: Retorna el registro actualizado en la base de datos.
+ *      requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - username
+ *               - email
+ *               - password
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 example: jorgediezmillones
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 example: jorgediezmillones@email.com
+ *               password:
+ *                 type: string
+ *                 example: contraseñaSegura12345
+ *               role:
+ *                 type: string
+ *                 enum: [user, admin]
+ *                 example: user
+ *      parameters: 
+ *              - in: path 
+ *                name: id 
+ *                description: El ID del usuario a actualizar 
+ *                required: true
+ *                schema: 
+ *                  type: integer
+ *      responses:
+ *          200: 
+ *              description: Respuesta exitosa
+ *              content: 
+ *                  application/json:
+ *                    schema: 
+ *                      $ref: '#/components/schemas/Product'
+ *          400:
+ *              description: Mala respuesta - datos invalidos
+ *              requestBody:
+ *                  required: true
+ *                  content: 
+ *                      application/json:
+ *                          schema: 
+ *                            type: object
+ *                            properties: 
+ *                                name:
+ *                                    type: string 
+ *                                    example: "Monitor curvo  49 pulgadas"
+ *                                price: 
+ *                                  type: number
+ *                                  example: 1599
+ *                                availability:
+ *                                    type: bool
+ *                                    example: true
+ */
 
 
 
