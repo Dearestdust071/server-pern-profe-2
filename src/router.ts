@@ -273,11 +273,77 @@ router.put('/products/:id',
     .custom(value=> value>0).withMessage('Valor no valido')
     ,handleInputErrors,updateProduct)
 
+
+
+/**
+ * 
+ * @swagger 
+ *  /api/products/{id}:
+ *      patch:
+ *          summary: Actualizar availability de un producto por id.
+ *          tags: 
+ *              - Products
+ *          description: Regresa un producto actualizado.
+ * 
+ *          parameters: 
+ *              - in: path 
+ *                name: id 
+ *                description: El ID del producto para actualizarlo 
+ *                required: true
+ *                schema: 
+ *                  type: integer
+ *          responses: 
+ *              200:
+ *                  description: Respuesta exitosa. B) 
+ *                  content: 
+ *                      application/json:
+ *                          schema: 
+ *                              $ref: '#/components/schemas/Product'
+ *              404: 
+ *                  description: No encontrado 
+ *              400:
+ *                  description: Solicitud erronea  - Id invalido
+ */
+
+
 router.patch('/products/:id', 
     param('id').isInt().withMessage('ID no válido'),
     handleInputErrors,
     updateAvailability
 )
+
+
+
+/**
+ * 
+ * @swagger 
+ *  /api/products/{id}:
+ *      delete:
+ *          summary: Borra un producto por id.
+ *          tags: 
+ *              - Products
+ *          description: La informacion del producto borrado.
+ * 
+ *          parameters: 
+ *              - in: path 
+ *                name: id 
+ *                description: El ID del producto para eliminarlo. 
+ *                required: true
+ *                schema: 
+ *                  type: integer
+ *          responses: 
+ *              200:
+ *                  description: Producto eliminado correctamente. B) 
+ *                  content: 
+ *                      application/json:
+ *                          schema: 
+ *                              $ref: '#/components/schemas/Product'
+ *              404: 
+ *                  description: No encontrado 
+ *              400:
+ *                  description: Solicitud erronea  - Id invalido
+ */
+
 router.delete('/products/:id', 
     param('id').isInt().withMessage('ID no válido'),
     handleInputErrors,
@@ -339,6 +405,8 @@ router.delete('/products/:id',
  *       400:
  *         description: Solicitud inválida - ID incorrecto
  */
+
+
 
 /**
  * @swagger
